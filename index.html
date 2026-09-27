@@ -1,0 +1,98 @@
+ <!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VR Boxing</title>
+</head>
+
+<body>
+
+    <div id="start-screen">
+
+        <div id="start-box">
+
+            <h1>🥊 VR BOXING</h1>
+
+            <div class="settings-block">
+
+                <div class="setting-label">
+                    DIFFICULTY
+                </div>
+
+                <div class="option-group">
+
+                    <button
+                        class="difficulty-button"
+                        data-difficulty="EASY"
+                    >
+                        EASY
+                    </button>
+
+                    <button
+                        class="difficulty-button selected"
+                        data-difficulty="NORMAL"
+                    >
+                        NORMAL
+                    </button>
+
+                    <button
+                        class="difficulty-button"
+                        data-difficulty="HARD"
+                    >
+                        HARD
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="settings-block">
+
+                <div class="setting-label">
+                    TIME
+                </div>
+
+                <div class="option-group">
+
+                    <button
+                        class="time-button selected"
+                        data-time="30"
+                    >
+                        30 SEC
+                    </button>
+
+                    <button
+                        class="time-button"
+                        data-time="60"
+                    >
+                        60 SEC
+                    </button>
+
+                </div>
+
+            </div>
+
+            <button id="start-button">
+                PLAY
+            </button>
+
+        </div>
+
+    </div>
+
+    <script
+        type="module"
+        src="/src/main.js"
+    ></script>
+
+</body>
+
+</html>
