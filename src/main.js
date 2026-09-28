@@ -57,6 +57,8 @@ const game = {
     vrGameInitialized: false,
     leftPunchCooldown: 0,
     rightPunchCooldown: 0,
+    leftHitArmed: true,
+    rightHitArmed: true,
     addScore: points => addScore(points, game),
     updateCombo: hit => updateCombo(hit, game),
     scene, camera, renderer, controllers, playerAnchor, target, hitbox, hud, audio

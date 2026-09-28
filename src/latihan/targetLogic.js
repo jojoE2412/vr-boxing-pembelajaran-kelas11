@@ -1,12 +1,6 @@
+export function getDifficultySettings(game) {
 // TODO (versi siswa): pindahkan konfigurasi difficulty ke tabel agar mudah dibaca.
 // Petunjuk: EASY, NORMAL, HARD mengatur kecepatan pukulan dan orbit target.
-export function getDifficultySettings(game) {
-    const presets = {
-        EASY: { minPunchSpeed: 0.85, perfectSpeed: 1.70, orbitMin: 0.90, orbitMax: 1.25, directionChangeMin: 1.5, directionChangeMax: 2.8 },
-        NORMAL: { minPunchSpeed: 1.20, perfectSpeed: 2.30, orbitMin: 1.30, orbitMax: 1.75, directionChangeMin: 1.0, directionChangeMax: 2.0 },
-        HARD: { minPunchSpeed: 1.65, perfectSpeed: 2.80, orbitMin: 1.75, orbitMax: 2.45, directionChangeMin: 0.70, directionChangeMax: 1.45 }
-    };
-    return presets[game.difficulty] || presets.NORMAL;
 }
 
 export function moveTarget(delta, game) {

@@ -11,6 +11,7 @@ export function updateCountdown(delta, game) {
     // Petunjuk: countdownStepTimer berkurang dengan delta; tampilkan 3, 2, 1, GO.
 }
 
+
 export function gameOver(game) {
     // TODO (versi siswa): akhiri ronde satu kali dan tampilkan hasil akhir.
     // Petunjuk: ubah state, sembunyikan HUD/dummy, lalu panggil game.showGameOver(score).

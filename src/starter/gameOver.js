@@ -18,23 +18,38 @@ function createPanelText() {
     mesh.frustumCulled = false;
     mesh.userData.draw = (score, best, hits, misses, perfects, bestCombo) => {
         context.clearRect(0, 0, canvas.width, canvas.height);
+        // Dark backing keeps the score readable against the gym environment.
+        const gradient = context.createLinearGradient(0, 0, 0, canvas.height);
+        gradient.addColorStop(0, 'rgba(10, 16, 31, 0.98)');
+        gradient.addColorStop(1, 'rgba(15, 25, 44, 0.96)');
+        context.fillStyle = gradient;
+        context.beginPath();
+        context.roundRect(24, 18, 976, 476, 36);
+        context.fill();
+        context.strokeStyle = 'rgba(255,255,255,0.18)';
+        context.lineWidth = 3;
+        context.stroke();
         context.textAlign = 'center';
         context.textBaseline = 'middle';
-        context.font = 'bold 64px Arial';
-        context.fillStyle = '#ff4444';
-        context.fillText('GAME OVER', 512, 60);
-        context.font = 'bold 52px Arial';
+        context.font = '900 68px Arial';
+        context.shadowColor = 'rgba(0,0,0,0.8)';
+        context.shadowBlur = 12;
+        context.fillStyle = '#ff5364';
+        context.fillText('GAME OVER', 512, 77);
+        context.shadowBlur = 0;
+        context.font = 'bold 54px Arial';
         context.fillStyle = '#ffffff';
-        context.fillText(`SCORE ${score}`, 512, 150);
+        context.fillText(`SCORE  ${score}`, 512, 160);
         context.fillStyle = '#ffdd44';
-        context.fillText(`BEST ${best}`, 512, 230);
+        context.font = 'bold 44px Arial';
+        context.fillText(`BEST  ${best}`, 512, 228);
         context.font = 'bold 38px Arial';
-        context.fillStyle = '#aaaaaa';
-        context.fillText(`HIT ${hits}    MISS ${misses}`, 512, 310);
+        context.fillStyle = '#d7e2f3';
+        context.fillText(`HIT  ${hits}     MISS  ${misses}`, 512, 300);
         context.fillStyle = '#66ff88';
-        context.fillText(`PERFECT ${perfects}`, 512, 375);
+        context.fillText(`PERFECT  ${perfects}`, 512, 360);
         context.fillStyle = '#ffcc66';
-        context.fillText(`BEST COMBO x${bestCombo}`, 512, 440);
+        context.fillText(`BEST COMBO  x${bestCombo}`, 512, 420);
         texture.needsUpdate = true;
     };
     return mesh;
@@ -65,8 +80,8 @@ export function initGameOver({ scene, camera, renderer, controllers, onPlayAgain
 
     const buttons = [];
     const addButton = (label, y, action) => {
-        const baseColor = 0x30394a;
-        const hoverColor = 0xe04b56;
+        const baseColor = 0x182943;
+        const hoverColor = 0x00c896;
         const mesh = new THREE.Mesh(
             new THREE.PlaneGeometry(0.72, 0.13),
             new THREE.MeshBasicMaterial({ color: baseColor, depthTest: false, depthWrite: false, side: THREE.DoubleSide })
@@ -127,7 +142,10 @@ export function initGameOver({ scene, camera, renderer, controllers, onPlayAgain
             }
         }
         for (const button of buttons) {
-            button.material.color.setHex(hovered.has(button) ? button.userData.hoverColor : button.userData.baseColor);
+            const isHovered = hovered.has(button);
+            button.material.color.setHex(isHovered ? button.userData.hoverColor : button.userData.baseColor);
+            button.material.opacity = isHovered ? 1 : 0.94;
+            button.scale.setScalar(isHovered ? 1.04 : 1);
         }
     }
     for (const controller of [controllers.left, controllers.right]) {
